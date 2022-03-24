@@ -43,26 +43,13 @@
                     {% comment %} filmler {% endcomment %}
                     <div class="row">
 
+                        {% for movie in movies %}
 
-
-                        
                         <div class="col-xl-3 col-md-6 mb-4">
                             {% include 'partials/_movie.html' %}
-                            {% comment %} m-card _movie.html {% endcomment %}
-
-                            
-                    </div>
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        {% include 'partials/_movie.html' %}
-                    </div>
+                        </div>
+                        {% endfor %}
                
-                <div class="col-xl-3 col-md-6 mb-4">
-                    {% include 'partials/_movie.html' %}
-                </div>
-           
-            <div class="col-xl-3 col-md-6 mb-4">
-                {% include 'partials/_movie.html' %}
-            </div>
         </div>
     </div>
 </div>
