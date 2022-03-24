@@ -11,6 +11,7 @@ data = {
             "title": "film adı 1",
             "description": "film açıklama 1",
             "imageUrl": "m1.jpg",
+            "coverImage": "cover1.jpg",
             "slug": "film-adi-1",
             "language": "english",
             "date": date(2023,5,5)
@@ -19,6 +20,7 @@ data = {
             "title": "film adı 2",
             "description": "film açıklama 2",
             "imageUrl": "m2.jpg",
+            "coverImage": "cover2.jpg",
             "slug": "film-adi-2",
             "language": "english",
             "date": date(2023,5,6)
@@ -27,6 +29,7 @@ data = {
             "title": "film adı 3",
             "description": "film açıklama 3",
             "imageUrl": "m3.jpg",
+            "coverImage": "cover3.jpg",
             "slug": "film-adi-3",
             "language": "english",
             "date": date(2023,5,7)
@@ -35,28 +38,11 @@ data = {
             "title": "film adı 4",
             "description": "film açıklama 4",
             "imageUrl": "m4.jpg",
+            "coverImage": "cover4.jpg",
             "slug": "film-adi-4",
             "language": "english",
             "date": date(2023,5,8)
         },
-        {
-            "title": "film adı 3",
-            "description": "film açıklama 3",
-            "imageUrl": "m3.jpg",
-            "slug": "film-adi-3",
-            "language": "english",
-            "date": date(2023,5,7)
-        },
-        {
-            "title": "film adı 4",
-            "description": "film açıklama 4",
-            "imageUrl": "m4.jpg",
-            "slug": "film-adi-4",
-            "language": "english",
-            "date": date(2023,5,8)
-        },
-        
-        
     ],
     "sliders": [
         {
@@ -95,6 +81,16 @@ def movies(request):
 
 
 def movie_details(request, slug):
+    movies = data["movies"]
+    # selectedMovie = None
+    # for movie in movies:
+    #     if movie["slug"] == slug:
+    #         selectedMovie = movie
+
+    selectedMovie = next(movie for movie in movies if movie["slug"] == slug)
+    print(selectedMovie)
+    # print(next(selectedMovie))
+
     return render(request, 'movie-details.html', {
-        "slug": slug
+        "movie": selectedMovie
     })
