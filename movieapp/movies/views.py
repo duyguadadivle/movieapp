@@ -58,15 +58,31 @@ data = {
         
         
     ],
-    "slider": [],
+    "sliders": [
+        {
+            "slider_image": "slider1.jpg",
+            "url": "film-adi-1",
+        },
+        {
+            "slider_image": "slider2.jpg",
+            "url": "film-adi-2",
+        },
+        {
+            "slider_image": "slider3.jpg",
+            "url": "film-adi-3",
+        },
+        
+    ],
 }
 
 
 def index(request):
     # son 4 film gösterilsin
     movies = data["movies"][-4:]
+    sliders = data["sliders"]
     return render(request, 'index.html',{
-        "movies": movies
+        "movies": movies,
+        "sliders": sliders
 
     })
 
