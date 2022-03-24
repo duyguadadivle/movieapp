@@ -39,14 +39,32 @@ data = {
             "language": "english",
             "date": date(2023,5,8)
         },
+        {
+            "title": "film adı 3",
+            "description": "film açıklama 3",
+            "imageUrl": "m3.jpg",
+            "slug": "film-adi-3",
+            "language": "english",
+            "date": date(2023,5,7)
+        },
+        {
+            "title": "film adı 4",
+            "description": "film açıklama 4",
+            "imageUrl": "m4.jpg",
+            "slug": "film-adi-4",
+            "language": "english",
+            "date": date(2023,5,8)
+        },
+        
+        
     ],
     "slider": [],
 }
 
 
 def index(request):
-    movies = data["movies"]
-    
+    # son 4 film gösterilsin
+    movies = data["movies"][-4:]
     return render(request, 'index.html',{
         "movies": movies
 
@@ -54,7 +72,10 @@ def index(request):
 
 
 def movies(request):
-    return render(request, 'movies.html')
+    movies = data["movies"]
+    return render(request, 'movies.html', {
+        "movies": movies
+    })
 
 
 def movie_details(request, slug):
