@@ -33,7 +33,7 @@ class Person(models.Model):
 
     first_name = CharField("Başlık",max_length=50)
     last_name = CharField("Özet",max_length=50)
-    biography = CharField("Resim",max_length=3000)
+    biography = CharField("Biyografi",max_length=3000)
     image_name = models.CharField(max_length=50)
     date_of_birth = models.DateField()
     gender = models.CharField("cinsiyet",max_length=1, choices=genders)
@@ -66,6 +66,8 @@ class Movie(models.Model):
     slug = models.SlugField(unique=True,db_index=True)
     budget = models.DecimalField(max_digits=19,decimal_places=2)
     language = models.CharField(max_length=100)
+    is_active = models.BooleanField(default=False)
+    is_home = models.BooleanField(default=False)
     people = models.ManyToManyField(Person)
     genres = models.ManyToManyField(Genre)
 
