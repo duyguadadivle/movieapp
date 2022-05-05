@@ -13,7 +13,7 @@ class CommentForm(forms.ModelForm):
         )
         model = Comment
         # field = ['full_name', 'email', 'text', 'rating']
-        exclude = ['movie',]
+        exclude = ['movie', 'date_added',]
         labels = {
             "full_name": "Ad Soyad",
             "email": "Eposta",
