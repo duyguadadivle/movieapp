@@ -2,6 +2,7 @@ from django.core import validators
 from django.db import models
 from django.core.validators import MinLengthValidator
 from django.db.models.fields import CharField
+from ckeditor.fields import RichTextField
 
 class Genre(models.Model):
     name = models.CharField(max_length=100)
@@ -59,7 +60,7 @@ class Person(models.Model):
 
 class Movie(models.Model):
     title = models.CharField(max_length=100)
-    description = models.TextField(validators = [MinLengthValidator(20)])
+    description = RichTextField() #
     image_name = models.ImageField(upload_to="movies")
     image_cover = models.ImageField(upload_to="movies")
     date = models.DateField()

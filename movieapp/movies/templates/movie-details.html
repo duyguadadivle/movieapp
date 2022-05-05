@@ -1,6 +1,4 @@
 
-
-
 {% extends 'movies/base.html' %}
 {% load static %}
 {% block css_files %}
@@ -272,6 +270,10 @@
                         <a href="#" class="d-sm-inline-block btn btn-danger shadow-sm"> Add to Watchlist <i class="fas fa-plus fa-sm  ml-1"></i></a>
                         </div>
                         </div>
+
+                    
+
+
                         <div class="row d-flex align-items-center justify-content-between py-3 px-4">
                         <div class="col-lg-6 m-b-4">
                         <p class="mb-0 text-gray-900"><i class="fas fa-money-bill fa-sm fa-fw mr-1"></i> Filmin Bütçesi - <span class="text-white rounded px-2 py-1 bg-info">$ {{movie.budget|floatformat:0}}</span></p>
@@ -313,7 +315,7 @@
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
 
-                        {{movie.description}}
+                        {{movie.description|safe}}
 
                         </div>
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
