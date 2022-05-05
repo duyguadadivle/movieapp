@@ -432,38 +432,47 @@
                         <div class="p-4 bg-light rounded mt-4">
                         <h5 class="card-title mb-4">Leave a Review</h5>
                         <form name="sentMessage">
-                        <div class="row">
+
+                     {{comment_form.as_p}}
+
+
+                     <div class="row">
                         <div class="control-group form-group col-lg-4 col-md-4">
                         <div class="controls">
-                        <label>Your Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" required="">
+                        <label> {{comment_form.full_name.label}} <span class="text-danger">*</span></label>
+                        
+                        {{comment_form.full_name}}
+
                         </div>
                         </div>
                         <div class="control-group form-group col-lg-4 col-md-4">
                         <div class="controls">
-                        <label>Your Email <span class="text-danger">*</span></label>
-                        <input type="email" class="form-control" required="">
+                        <label> {{comment_form.email.label}} <span class="text-danger">*</span></label>
+                        
+                        {{comment_form.email}}
+                        
                         </div>
                         </div>
                         <div class="control-group form-group col-lg-4 col-md-4">
                         <div class="controls">
-                        <label>Rating <span class="text-danger">*</span></label>
-                        <select class="form-control custom-select">
-                        <option>1 Star</option>
-                        <option>2 Star</option>
-                        <option>3 Star</option>
-                        <option>4 Star</option>
-                        <option>5 Star</option>
-                        </select>
+                        <label> {{comment_form.rating.label}} <span class="text-danger">*</span></label>
+                        
+                        {{comment_form.rating}}
+
                         </div>
                         </div>
                         </div>
                         <div class="control-group form-group">
                         <div class="controls">
-                        <label>Review <span class="text-danger">*</span></label>
-                        <textarea rows="3" cols="100" class="form-control"></textarea>
+                        <label> {{comment_form.text.label}} <span class="text-danger">*</span></label>
+                        
+                        {{comment_form.text}}
+
                         </div>
                         </div>
+
+                     {% comment %} ### {% endcomment %}
+                        
                         <div class="text-right">
                         <button type="submit" class="btn btn-primary">Send Message</button>
                         </div>
