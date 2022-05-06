@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from account.forms import LoginForm
+#from movieapp.account.forms import LoginForm
 
 # Create your views here.
 def login_request(request):
-    return render(request, 'account/login.html')
+    form = LoginForm()
+    return render(request, 'account/login.html', {'form': form})
 
 def register_request(request):
     return render(request, 'account/register.html')
