@@ -2,6 +2,9 @@ from django.shortcuts import redirect, render
 from account.forms import LoginForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+
+from account.forms import CreateUserForm
+#from movieapp.account.forms import CreateUserForm
 #from movieapp.account.forms import LoginForm
 
 # Create your views here.
@@ -38,7 +41,25 @@ def login_request(request):
     return render(request, 'account/login.html', {'form': form})
 
 def register_request(request):
-    return render(request, 'account/register.html')
+    if request.user.is_authenticated:
+        return redirect("home_page")
+
+    if request.method == "POST":
+        form = CreateUserForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password1")
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect("home_page")
+        else:
+            form.add_error(None, "You must fill in the form completely.")
+            return render(request, 'account/register.html', {"form":form})
+
+    form = CreateUserForm()
+    return render(request, 'account/register.html', {"form":form})
 
 def change_password(request):
     return render(request, 'account/change_password.html')    
