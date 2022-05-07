@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from account.forms import LoginForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 
 from account.forms import CreateUserForm
@@ -67,4 +67,5 @@ def change_password(request):
     return render(request, 'account/change_password.html')    
     
 def logout_request(request):
-    pass  
+    logout(request)
+    return redirect("home_page")
