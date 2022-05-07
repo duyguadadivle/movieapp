@@ -43,7 +43,7 @@ class CreateUserForm(UserCreationForm):
         if User.objects.filter(email=email).exists():
             self.add_error("email","There is a user with the email.")
 
-            return email
+        return email
 
     def save(self, commit=True):
         user = super(UserCreationForm, self).save(commit=False)
