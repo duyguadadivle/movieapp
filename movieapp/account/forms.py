@@ -41,7 +41,7 @@ class CreateUserForm(UserCreationForm):
         email = self.cleaned_data.get("email")
 
         if User.objects.filter(email=email).exists():
-            self.add_error("email","There is a user with the email.")
+            self.add_error("email","There is already a user with this email address.")
 
         return email
 
