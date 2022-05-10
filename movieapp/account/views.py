@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from account.forms import CreateUserForm, LoginForm, UserPasswordChangeForm, UserForm, ProfileForm
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # from movieapp.account.forms import UserPasswordChangeForm
 #from movieapp.account.forms import CreateUserForm
@@ -79,9 +80,22 @@ def change_password(request):
     form = UserPasswordChangeForm(request.user)
     return render(request, 'account/change_password.html', {"form": form})    
 
+@login_required(login_url='/account/login')
 def profile(request):
-    user_form = UserForm()
-    profile_form = ProfileForm()
+    if request.method == "POST":
+        user_form = UserForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(request.POST, instance=request.user.profile, files=request.FILES)
+        if user_form.is_valid() and profile_form.is_valid:
+            user_form.save()
+            profile_form.save()
+            messages.success(request, "Your profile has been updated successfully.")
+            return redirect("profile")
+        else:
+            messages.error(request, "Please check your user information.")    
+    else:
+        user_form = UserForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)     
+
     return render(request, 'account/profile.html', {
         'user_form': user_form,
         'profile_form': profile_form
