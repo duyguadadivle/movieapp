@@ -1,9 +1,9 @@
 from django.shortcuts import redirect, render
-from account.forms import LoginForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.models import User
-
-from account.forms import CreateUserForm
+from account.forms import CreateUserForm, LoginForm, UserPasswordChangeForm
+from django.contrib import messages
+# from movieapp.account.forms import UserPasswordChangeForm
 #from movieapp.account.forms import CreateUserForm
 #from movieapp.account.forms import LoginForm
 
@@ -64,7 +64,18 @@ def register_request(request):
     return render(request, 'account/register.html', {"form":form})
 
 def change_password(request):
-    return render(request, 'account/change_password.html')    
+    if request.method == "POST":
+        form = UserPasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, "Password is changed")
+            return redirect("change_password")
+        else:
+            return render(request, 'account/change_password.html', {"form":form})
+
+    form = UserPasswordChangeForm(request.user)
+    return render(request, 'account/change_password.html', {"form": form})    
 
 def profile(request):
     return render(request, 'account/profile.html')   
