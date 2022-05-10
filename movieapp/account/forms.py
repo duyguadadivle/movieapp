@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.forms import widgets
 import random
 
+from account.models import Profile
 
 class UserPasswordChangeForm(PasswordChangeForm):
     def __init__(self, *args, **kwargs):
@@ -66,3 +67,24 @@ class CreateUserForm(UserCreationForm):
         if commit:
             user.save()
         return user    
+
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ("first_name", "last_name", "email",)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["first_name"].widget = widgets.TextInput(attrs={"class":"form-control","placeholder":"First Name"})
+        self.fields["last_name"].widget = widgets.TextInput(attrs={"class":"form-control","placeholder":"Last Name"})
+        self.fields["email"].widget = widgets.EmailInput(attrs={"class":"form-control","placeholder":"Email"})    
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ("avatar", "location",)   
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["location"].widget = widgets.TextInput(attrs={"class":"form-control","placeholder":"Location"})         

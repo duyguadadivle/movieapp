@@ -1,8 +1,10 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.models import User
-from account.forms import CreateUserForm, LoginForm, UserPasswordChangeForm
+from account.forms import CreateUserForm, LoginForm, UserPasswordChangeForm, UserForm, ProfileForm
+from django.contrib.auth.models import User
 from django.contrib import messages
+
 # from movieapp.account.forms import UserPasswordChangeForm
 #from movieapp.account.forms import CreateUserForm
 #from movieapp.account.forms import LoginForm
@@ -78,7 +80,12 @@ def change_password(request):
     return render(request, 'account/change_password.html', {"form": form})    
 
 def profile(request):
-    return render(request, 'account/profile.html')   
+    user_form = UserForm()
+    profile_form = ProfileForm()
+    return render(request, 'account/profile.html', {
+        'user_form': user_form,
+        'profile_form': profile_form
+    })   
 
 def watch_list(request):
     return render(request, 'account/watch-list.html')    
