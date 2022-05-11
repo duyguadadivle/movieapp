@@ -32,7 +32,13 @@
                    aria-haspopup="true"
                    aria-expanded="false">
                     <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.username }}</span>
+                    {% if user.profile.avatar %}
                     <img class="img-profile rounded-circle" src="{{user.profile.avatar.url}}">
+                    {% else %}
+                    <img class="img-profile rounded-circle" src="{% static 'img/user.png'}">
+                    {% endif %}
+                    
+                    
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                      aria-labelledby="userDropdown">
