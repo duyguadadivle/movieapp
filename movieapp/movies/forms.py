@@ -5,20 +5,20 @@ from django.forms import widgets
 class CommentForm(forms.ModelForm):
     class Meta:
         numbers = (
-            ('1', '1 Yıldız'),
-            ('2', '2 Yıldız'),
-            ('3', '3 Yıldız'),
-            ('4', '4 Yıldız'),
-            ('5', '5 Yıldız'),
+            ('1', '1 Star'),
+            ('2', '2 Stars'),
+            ('3', '3 Stars'),
+            ('4', '4 Stars'),
+            ('5', '5 Stars'),
         )
         model = Comment
         # field = ['full_name', 'email', 'text', 'rating']
         exclude = ['movie', 'date_added',]
         labels = {
-            "full_name": "Ad Soyad",
-            "email": "Eposta",
-            "text": "Yorum",
-            "rating": "Puan"
+            "full_name": "Name Surname",
+            "email": "Emal",
+            "text": "Comment",
+            "rating": "Score"
         }
         widgets = {
             "full_name": widgets.TextInput(attrs={"class":"form-control"}),
