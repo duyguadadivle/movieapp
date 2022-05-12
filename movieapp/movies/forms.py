@@ -16,7 +16,7 @@ class CommentForm(forms.ModelForm):
         exclude = ['movie', 'date_added',]
         labels = {
             "full_name": "Name Surname",
-            "email": "Emal",
+            "email": "Email",
             "text": "Comment",
             "rating": "Score"
         }
