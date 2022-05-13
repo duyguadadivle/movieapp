@@ -4,37 +4,20 @@ from django.shortcuts import render
 from tomlkit import date
 from datetime import date
 from django.shortcuts import get_object_or_404, render
+# from movieapp.movies.models import Slider
 # from movieapp.movies.forms import CommentForm
 from movies.forms import CommentForm
 
 
 # from movieapp.movies.models import Movie
-from movies.models import Movie
+from movies.models import Movie, Slider
 from django.urls import reverse
 
-data = {
-    
-    "sliders": [
-        {
-            "slider_image": "slider1.jpg",
-            "url": "film-adi-1",
-        },
-        {
-            "slider_image": "slider2.jpg",
-            "url": "film-adi-2",
-        },
-        {
-            "slider_image": "slider3.jpg",
-            "url": "film-adi-3",
-        },
-        
-    ],
-}
 
 
 def index(request):
     movies = Movie.objects.filter(is_active=True, is_home=True)
-    sliders = data["sliders"]
+    sliders = Slider.objects.filter(is_active=True)
     return render(request, 'movies/index.html',{
         "movies": movies,
         "sliders": sliders

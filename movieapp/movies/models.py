@@ -23,24 +23,24 @@ class Contact(models.Model):
 class Person(models.Model):
 
     genders = (
-        ('M','Erkek'),
-        ('F','Kadın'),
+        ('M','Man'),
+        ('F','Woman'),
     )
 
     duty_types = (
-        ('1','Görevli'),
-        ('2','Oyuncu'),
-        ('3','Yönetmen'),
-        ('4','Senarist'),
+        ('1','Officer'),
+        ('2','Actor'),
+        ('3','Director'),
+        ('4','Scriptwriter'),
     )
 
-    first_name = CharField("Başlık",max_length=50)
-    last_name = CharField("Özet",max_length=50)
-    biography = CharField("Biyografi",max_length=3000)
+    first_name = CharField("Name",max_length=50)
+    last_name = CharField("Surname",max_length=50)
+    biography = CharField("Biography",max_length=3000)
     image_name = models.CharField(max_length=50)
     date_of_birth = models.DateField()
-    gender = models.CharField("cinsiyet",max_length=1, choices=genders)
-    duty_type = models.CharField("görev",max_length=1, choices=duty_types)
+    gender = models.CharField("Gender",max_length=1, choices=genders)
+    duty_type = models.CharField("Duty",max_length=1, choices=duty_types)
     contact = models.OneToOneField(Contact, on_delete=models.CASCADE, null=True, blank=True)
 
     @property
@@ -48,12 +48,12 @@ class Person(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 
-    full_name.fget.short_description = "ad soyad"
+    full_name.fget.short_description = "Name Surname"
 
 
     class Meta:
-        verbose_name = "Kişi"
-        verbose_name_plural = "Kişiler"
+        verbose_name = "Person"
+        verbose_name_plural = "People"
 
 
 
@@ -75,11 +75,18 @@ class Movie(models.Model):
     genres = models.ManyToManyField(Genre)
 
     class Meta:
-        verbose_name = "Film"
-        verbose_name_plural = "Fimler"
+        verbose_name = "Movie"
+        verbose_name_plural = "Movies"
 
     def __str__(self):
         return self.title
+        
+class Slider(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to="movies")
+    movie = models.ForeignKey(Movie, on_delete=models.SET_NULL, null=True, blank=True)
+    is_active = models.BooleanField(default=False)
+
 
 
 class Comment(models.Model):

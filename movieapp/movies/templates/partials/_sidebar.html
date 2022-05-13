@@ -7,7 +7,8 @@
             <img src="{% static 'img/logo-icon.png' %}" alt="">
         </div>
         <div class="sidebar-brand-text mx-3">
-            <img src="{% static 'img/logo.png' %}" alt="">
+            {% comment %} <img src="{% static 'img/logo.png' %}" alt=""> {% endcomment %}
+            <h4>MOVIEAPP</h4>
         </div>
     </a>
     <li class="nav-item active">
@@ -16,6 +17,7 @@
             <span>Movies</span>
         </a>
     </li>
+{% comment %}     
     <li class="nav-item">
         <a class="nav-link" href="events.html">
             <i class="fas fa-fw fa-glass-cheers"></i>
@@ -90,5 +92,5 @@
                 <a class="collapse-item" href="blank.html">Blank Page</a>
             </div>
         </div>
-    </li>
+    </li> {% endcomment %}
 </ul>

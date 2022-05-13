@@ -2,11 +2,12 @@
 <div class="card m-card shadow border-0">
     <a href="{% url 'movie_details' movie.slug %}">
         <div class="m-card-cover">
-            <div class="position-absolute bg-white shadow-sm rounded text-center p-2 m-2 love-box">
-                <h6 class="text-gray-900 mb-0 font-weight-bold">
+            <div>
+            {% comment %} <div class="position-absolute bg-white shadow-sm rounded text-center p-2 m-2 love-box"> {% endcomment %}
+                {% comment %} <h6 class="text-gray-900 mb-0 font-weight-bold">
                     <i class="fas fa-heart text-danger"></i> 88%
             </h6>
-            <small class="text-muted">23,421</small>
+            <small class="text-muted">23,421</small> {% endcomment %}
         </div>
         <img src="{{ movie.image_name.url }}" class="card-img-top" alt="...">
     </div>

@@ -21,11 +21,12 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12">
                             <div class="cover-pic">
-                                <div class="position-absolute bg-white shadow-sm rounded text-center p-2 m-4 love-box">
+                                <div class>
+                                {% comment %} <div class="position-absolute bg-white shadow-sm rounded text-center p-2 m-4 love-box">
                                     <h6 class="text-gray-900 mb-0 font-weight-bold">
                                         <i class="fas fa-heart text-danger"></i> 50%
                                 </h6>
-                                <small class="text-muted">8,784</small>
+                                <small class="text-muted">8,784</small> {% endcomment %}
                             </div>
                             <img src="{{ movie.image_cover.url }}" class="img-fluid" alt="...">
                         </div>
@@ -57,8 +58,8 @@
                                 </p>
                             </div>
                             <div class="col-lg-5 text-right">
-                                <a href="#" class="d-sm-inline-block btn btn-primary shadow-sm"><i class="fas fa-share-alt"></i></a>
-                                <a href="#" class="d-sm-inline-block btn btn-danger shadow-sm"> Add to Watchlist <i class="fas fa-plus fa-sm  ml-1"></i></a>
+                                {% comment %} <a href="#" class="d-sm-inline-block btn btn-primary shadow-sm"><i class="fas fa-share-alt"></i></a>
+                                <a href="#" class="d-sm-inline-block btn btn-danger shadow-sm"> Add to Watchlist <i class="fas fa-plus fa-sm  ml-1"></i></a> {% endcomment %}
                             </div>
                         </div>
                         <div class="row d-flex align-items-center justify-content-between py-3 px-4">
@@ -67,7 +68,7 @@
                                     <i class="fas fa-money-bill fa-sm fa-fw mr-1"></i> Budget - <span class="text-white rounded px-2 py-1 bg-info">$ {{ movie.budget|floatformat:0 }}</span>
                                 </p>
                             </div>
-                            <div class="col-lg-6 text-right">
+                            {% comment %} <div class="col-lg-6 text-right">
                                 <a href="#" class="btn btn-sm btn-primary btn-circle">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
@@ -80,7 +81,7 @@
                                 <a href="#" class="btn btn-sm btn-info btn-circle">
                                     <i class="fab fa-twitter"></i>
                                 </a>
-                            </div>
+                            </div> {% endcomment %}
                         </div>
                     </div>
                     <div class="bg-white p-3 widget shadow rounded mb-4">

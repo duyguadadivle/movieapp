@@ -4,13 +4,8 @@
     <div class="media mb-4">
 
         
-        {% if user.profile.avatar %}
-            <img class="img-profile rounded-circle"
-                 src="{{ user.profile.avatar.url }}">
-        {% else %}
-            <img class="img-profile rounded-circle" src="{% static 'img/user.png'}">
-        {% endif %}
-
+        {% comment %} <img class="d-flex mr-3 rounded-circle" src="{% static 'img/user.png' %}" alt=""> {% endcomment %}
+        
 
         <div class="media-body">
             <div class="mt-0 mb-1">
@@ -23,8 +18,4 @@
         </div>
     </div>
 {% endfor %}
-{% comment %} {% if user.profile.avatar %}
-    <img class="img-profile rounded-circle" src="{{ user.profile.avatar.url }}">
-{% else %}
-    <img class="img-profile rounded-circle" src="{% static 'img/user.png'}">
-{% endif %} {% endcomment %}
+
