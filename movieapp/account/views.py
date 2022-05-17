@@ -101,8 +101,8 @@ def profile(request):
         'profile_form': profile_form
     })   
 
-def watch_list(request):
-    return render(request, 'account/watch-list.html')    
+# def watch_list(request):
+#     return render(request, 'account/watch-list.html')    
   
 def logout_request(request):
     logout(request)
