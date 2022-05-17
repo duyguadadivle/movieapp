@@ -15,10 +15,10 @@ from django.urls import reverse
 
 
 
-def index(request):
+def movieapp(request):
     movies = Movie.objects.filter(is_active=True, is_home=True)
     sliders = Slider.objects.filter(is_active=True)
-    return render(request, 'movies/index.html',{
+    return render(request, 'movies/movieapp.html',{
         "movies": movies,
         "sliders": sliders
 
